@@ -20,6 +20,8 @@ namespace WpfPreviewApp
 
         private void DataGridOnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs selectedCellsChangedEventArgs)
         {
+            if(employees.Count==0) return;
+            
             var selectedItem = (Employee)dataGrid.SelectedItem;
             textBox.Text = selectedItem.Id.ToString();
             textBox1.Text = selectedItem.FirstName;
@@ -87,8 +89,7 @@ namespace WpfPreviewApp
 
             using (var db = new EmployeeModel())
             {
-                if (selectedEmployee != null) /*db.Employees.Remove(selectedEmployee);*/
-                    db.Entry(selectedEmployee).State = EntityState.Deleted;
+                if (selectedEmployee != null) db.Entry(selectedEmployee).State = EntityState.Deleted;
                 await db.SaveChangesAsync();
 
                 employees.Remove(selectedEmployee);
