@@ -50,6 +50,15 @@ namespace ManyToManyRelation
                         Console.WriteLine($"\t{product.Name} - price: {product.Price}");
                     }
                 }
+
+                Console.WriteLine(db.Database.Connection.ConnectionString);
+                //var average = db.Database.SqlQuery<Product>($"[dbo].[Function]({1},{2})");
+                //Console.WriteLine(average);
+                //var products = db.Database.SqlQuery<Product>("select * from Products");
+                //foreach (Product product in products)
+                //{
+                //    Console.WriteLine($"{product.Name} {product.Price}");
+                //}
             }
 
             Console.ReadKey();
